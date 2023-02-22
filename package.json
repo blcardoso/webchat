@@ -25,6 +25,7 @@
     "@fortawesome/pro-thin-svg-icons": "^6.3.0",
     "@fortawesome/sharp-regular-svg-icons": "^6.3.0",
     "@fortawesome/sharp-solid-svg-icons": "^6.3.0",
+    "@fortawesome/vue-fontawesome": "^3.0.3",
     "@pinia/nuxt": "^0.4.7",
     "pinia": "^2.0.32",
     "sass": "^1.58.3",

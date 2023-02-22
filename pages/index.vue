@@ -22,6 +22,7 @@
         class="text-white rounded-lg font-weight-bold"
         color="#6300E0"
         height="56"
+        :loading="loading"
         @click="createConnection"
       >
         ENTRAR
@@ -42,11 +43,13 @@
   import { io } from 'socket.io-client';
 
   const error = useState('error', '');
+  const loading = useState('loading', () => false);
   const errorMessage = useState('errorMessage', '');
   const nickname = useState('nickname', '');
   const logoImg = new URL('~/assets/logo.png', import.meta.url).href;
 
   const createConnection = () => {
+    loading.value = true
     const router = useRouter();
 
     const connectionOptions = {
@@ -60,6 +63,8 @@
 
     // Adiciona usuário no grupo
     socket.emit('join', { name: nickname.value, room: 'geral' }, ({ statusCode, message }) => {
+      loading.value = false;
+
       if (statusCode === 400) {
         error.value = true;
         errorMessage.value = message;

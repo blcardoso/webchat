@@ -13,10 +13,15 @@
       <v-text-field
         placeholder="Digite seu nickname aqui"
         variant="solo"
-        class="username-input rounded-pill"
+        class="username-input"
       />
 
-      <v-btn block class="login-btn rounded-lg">
+      <v-btn
+        block
+        class="text-white rounded-lg font-weight-bold"
+        color="#6300E0"
+        height="56"
+      >
         ENTRAR
       </v-btn>
     </section>
@@ -39,11 +44,9 @@ export default {
   display: flex;
   width: 100vw;
   height: 100vh;
+  color: white;
   background-image: url("../assets/background.png");
   background-color: black;
-}
-.main-container small {
-  color: white;
 }
 
 .login-section {
@@ -63,12 +66,4 @@ export default {
 .username-input {
   width: 100%;
 }
-
-.login-btn {
-  height: 56px;
-  background-color: #6300E0;
-  color: white;
-  font-weight: 700;
-}
-
 </style>

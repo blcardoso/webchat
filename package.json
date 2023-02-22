@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@nuxt/eslint-config": "^0.1.1",
+    "eslint": "^8.34.0",
+    "nuxt": "^3.2.2"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.3.0",
+    "@fortawesome/free-brands-svg-icons": "^6.3.0",
+    "@fortawesome/free-regular-svg-icons": "^6.3.0",
+    "@fortawesome/free-solid-svg-icons": "^6.3.0",
+    "@fortawesome/pro-duotone-svg-icons": "^6.3.0",
+    "@fortawesome/pro-light-svg-icons": "^6.3.0",
+    "@fortawesome/pro-regular-svg-icons": "^6.3.0",
+    "@fortawesome/pro-solid-svg-icons": "^6.3.0",
+    "@fortawesome/pro-thin-svg-icons": "^6.3.0",
+    "@fortawesome/sharp-regular-svg-icons": "^6.3.0",
+    "@fortawesome/sharp-solid-svg-icons": "^6.3.0",
+    "@pinia/nuxt": "^0.4.7",
+    "pinia": "^2.0.32",
+    "sass": "^1.58.3",
+    "vuetify": "^3.1.4"
+  },
+  "overrides": {
+    "vue": "latest"
+  }
+}

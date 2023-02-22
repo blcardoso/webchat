@@ -1,26 +1,34 @@
 <template>
-      <v-app>
-        <v-navigation-drawer width="420" permanent>
-          Aqui é a barra de navegação
-        </v-navigation-drawer>
-        <v-app-bar color="#190C2D" class="d-flex justify-space-between">
-          <v-card color="#130B1F" class="pa-2 text-white d-flex align-center justify-space-between" min-width="230px">
-            <div class="user-avatar rounded-circle d-flex justify-center align-center">
-              <font-awesome-icon :icon="['fas', 'user']"></font-awesome-icon>
-            </div>
-            <span class="font-weight-regular">20Matar70Correr</span>
-          </v-card>
-        </v-app-bar>
-        <v-main class="chat-box">
-          <ChatBox />
-        </v-main>
-      </v-app>
+  <v-app>
+    <v-navigation-drawer width="auto" permanent>
+      <SideMenu />
+    </v-navigation-drawer>
+    <v-app-bar
+      color="#190C2D"
+      class="d-flex justify-space-between"
+    >
+      <v-card
+        color="#130B1F"
+        class="pa-2 text-white d-flex align-center justify-space-between"
+        min-width="230px"
+      >
+        <div class="user-avatar rounded-circle d-flex justify-center align-center">
+          <font-awesome-icon :icon="['fas', 'user']" />
+        </div>
+        <span class="font-weight-regular">20Matar70Correr</span>
+      </v-card>
+    </v-app-bar>
+    <v-main class="chat-box">
+      <ChatBox />
+    </v-main>
+  </v-app>
 </template>
 
 <script setup>
 import { onMounted } from 'vue';
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import ChatBox from "~/components/ChatBox";
+import SideMenu from "~/components/SideMenu.vue";
 
 onMounted(() => {
   fetch('http://54.175.169.227:5000/usuarios/geral', {

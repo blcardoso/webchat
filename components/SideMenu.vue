@@ -10,6 +10,7 @@
     </div>
     <v-card>
       <v-text-field
+        v-model="searchRef"
         density="compact"
         variant="solo"
         label="Pesquisar nome"
@@ -32,7 +33,7 @@
       </div>
 
       <v-list-item
-        v-for="item in items"
+        v-for="item in groupsMessages.filter(item => item.title.includes(searchRef))"
         :key="item.title"
         class="card-item rounded-lg"
         :prepend-avatar="''"
@@ -72,7 +73,7 @@
       </div>
 
       <v-list-item
-        v-for="item in usuarios"
+        v-for="item in usersMessages.filter(item =>  item.title.includes(searchRef))"
         :key="item.title"
         class="card-item rounded-lg"
       >
@@ -108,53 +109,50 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, computed, reactive, onMounted } from 'vue'
 
 export default {
   name: 'SideMenu',
   setup() {
-    const items = ref([{
-      title: 'Maria Clara',
-      subtitle: 'Oie, leleco?'
-    },
-    {
-      title: 'Maria Clara',
-      subtitle: 'Oie, leleco?'
-    },
-    {
-      title: 'Maria Clara',
-      subtitle: 'Oie, leleco?'
-    },
+    const groupsMessages = reactive([
+      {
+        title: 'Rotaexata',
+        subtitle: 'Daily agora, bora descer'
+      },
+      {
+        title: 'Dev talks',
+        subtitle: 'Hoje não vai dar, vamos remarcar.'
+      },
+    ]);
+    const usersMessages = reactive([
+      {
+        title: 'Leo Bap',
+        subtitle: 'Fala meu! Bora comer..dasdsadadasdasd'
+      },
+      {
+        title: 'Luara B.',
+        subtitle: 'Bora pro jiu!!'
+      },
+      {
+        title: 'Matheus S.',
+        subtitle: 'Reprovei teu PR MOB-982!'
+      },
+      {
+        title: 'Moço',
+        subtitle: 'Nem me deu bom dia hoje...'
+      },
     ]);
 
-    const usuarios = ref([{
-      title: 'RotaExata',
-      subtitle: '7 participantes'
-    },
-    {
-      title: 'RotaExata',
-      subtitle: '7 participantes'
-    },
-    {
-      title: 'RotaExata',
-      subtitle: '7 participantes'
-    },
-    {
-      title: 'RotaExata',
-      subtitle: '7 participantes'
-    },
-    {
-      title: 'RotaExata',
-      subtitle: '7 participantes'
-    },
-    {
-      title: 'RotaExata',
-      subtitle: '7 participantes'
-    }])
+    const searchRef = ref('');
 
     const logoImg = new URL('~/assets/logo.png', import.meta.url).href
 
-    return { items, usuarios, logoImg }
+    return {
+      usersMessages,
+      groupsMessages,
+      logoImg,
+      searchRef,
+    }
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <v-navigation-drawer permanent>
-      Aqui é a barra de navegação
+    <v-navigation-drawer width="auto" permanent>
+      <SideMenu />
     </v-navigation-drawer>
     <v-app-bar
       color="#190C2D"
@@ -28,6 +28,7 @@
 import { ref, onMounted } from 'vue';
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import ChatBox from "~/components/ChatBox";
+import SideMenu from "~/components/SideMenu.vue";
 
 onMounted(() => {
   fetch('http://54.175.169.227:5000/usuarios/geral', {

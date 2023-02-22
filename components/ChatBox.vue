@@ -1,19 +1,32 @@
 <template>
-<v-responsive max-width="100%" class="message-input">
-  <v-text-field variant="solo"></v-text-field>
-</v-responsive>
+  <div class="fill-height d-flex flex-column overflow-y-auto">
+    <message-box message="teste" time="12:30 PM" class="mx-3 pa-1 rounded-lg"/>
+    <v-responsive class="message-input px-3">
+      <v-text-field variant="solo" placeholder="Mensagem">
+        <template #append-inner>
+          <div
+              class="button-icon"
+          >
+            <font-awesome-icon :icon="['fas', 'paper-plane-top']"></font-awesome-icon>
+          </div>
+        </template>
+      </v-text-field>
+    </v-responsive>
+  </div>
 </template>
 
-<script>
-export default {
-  name: "ChatBox"
-}
+<script setup>
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import MessageBox from "../components/MessageBox"
 </script>
 
 <style scoped>
 .message-input {
-  width: 100%;
+  width: calc(100% - 420px);
   position: absolute;
   bottom: 0;
+}
+.button-icon {
+  cursor: pointer;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
       <v-app>
-        <v-navigation-drawer permanent>
+        <v-navigation-drawer width="420" permanent>
           Aqui é a barra de navegação
         </v-navigation-drawer>
         <v-app-bar color="#190C2D" class="d-flex justify-space-between">
@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { onMounted } from 'vue';
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import ChatBox from "~/components/ChatBox";
 

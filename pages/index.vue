@@ -41,6 +41,7 @@
 
 <script setup>
   import { io } from 'socket.io-client';
+  import { useUserStore } from '@/stores/user';
 
   const error = useState('error', '');
   const loading = useState('loading', () => false);
@@ -48,32 +49,38 @@
   const nickname = useState('nickname', '');
   const logoImg = new URL('~/assets/logo.png', import.meta.url).href;
 
-  const createConnection = () => {
+  const userStore = useUserStore();
+  console.log(userStore.getUser)
+
+  const createConnection = async () => {
     loading.value = true
-    const router = useRouter();
+    // const router = useRouter();
 
-    const connectionOptions = {
-      "force new connection": true,
-      "reconnectionAttempts": "Infinity",
-      "timeout": 10000,
-      "transports": ["websocket"]
-    };
+    // const connectionOptions = {
+    //   "force new connection": true,
+    //   "reconnectionAttempts": "Infinity",
+    //   "timeout": 10000,
+    //   "transports": ["websocket"]
+    // };
 
-    const socket = io.connect('http://54.175.169.227:5000', connectionOptions);
+    // const socket = io.connect('http://54.175.169.227:5000', connectionOptions);
 
     // Adiciona usuário no grupo
-    socket.emit('join', { name: nickname.value, room: 'geral' }, ({ statusCode, message }) => {
+    // socket.emit('join', { name: nickname.value, room: 'geral' }, ({ statusCode, message }) => {
       loading.value = false;
 
-      if (statusCode === 400) {
-        error.value = true;
-        errorMessage.value = message;
-        return;
-      }
+    //   if (statusCode === 400) {
+    //     error.value = true;
+    //     errorMessage.value = message;
+    //     return;
+    //   }
 
-      router.push('/home');
-    })
+    //   userStore.setUser(nickname.value);
+    //   // router.push('/home');
+    // })
 
+    await userStore.setUser({ nickname: nickname.value });
+    console.log(userStore.getUser)
   }
 </script>
 

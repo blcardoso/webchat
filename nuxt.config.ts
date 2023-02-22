@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-    css: ['vuetify/lib/styles/main.sass'],
+    css: ['vuetify/lib/styles/main.sass', '@fortawesome/fontawesome-svg-core/styles.css'],
     ssr: false,
     build: {
         transpile: ['vuetify'],
@@ -17,5 +17,8 @@ export default defineNuxtConfig({
         autoImports: [
             'defineStore'
         ],
-    }
+    },
+    plugins: [
+        { src: '~/plugins/fontAwesome.js' }
+    ]
 })

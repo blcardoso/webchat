@@ -28,6 +28,7 @@
     "@pinia/nuxt": "^0.4.7",
     "pinia": "^2.0.32",
     "sass": "^1.58.3",
+    "socket.io-client": "^4.6.1",
     "vuetify": "^3.1.4"
   },
   "overrides": {

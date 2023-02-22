@@ -11,9 +11,10 @@
       <small class="mb-12">Conectando as pessoas ao seu redor</small>
 
       <v-text-field
+        v-model="nickname"
         placeholder="Digite seu nickname aqui"
         variant="solo"
-        class="username-input"
+        class="nickname-input"
       />
 
       <v-btn
@@ -21,22 +22,54 @@
         class="text-white rounded-lg font-weight-bold"
         color="#6300E0"
         height="56"
+        @click="createConnection"
       >
         ENTRAR
       </v-btn>
     </section>
+
+    <v-snackbar
+      v-model="error"
+      :timeout="2000"
+      color="red-darken-1"
+    >
+      {{ errorMessage }}
+    </v-snackbar>
   </div>
 </template>
 
-<script>
-export default {
-  name: "index",
-  data() {
-    return {
-      logoImg: new URL('~/assets/logo.png', import.meta.url).href
-    }
+<script setup>
+  import { io } from 'socket.io-client';
+
+  const error = useState('error', '');
+  const errorMessage = useState('errorMessage', '');
+  const nickname = useState('nickname', '');
+  const logoImg = new URL('~/assets/logo.png', import.meta.url).href;
+
+  const createConnection = () => {
+    const router = useRouter();
+
+    const connectionOptions = {
+      "force new connection": true,
+      "reconnectionAttempts": "Infinity",
+      "timeout": 10000,
+      "transports": ["websocket"]
+    };
+
+    const socket = io.connect('http://54.175.169.227:5000', connectionOptions);
+
+    // Adiciona usuário no grupo
+    socket.emit('join', { name: nickname.value, room: 'geral' }, ({ statusCode, message }) => {
+      if (statusCode === 400) {
+        error.value = true;
+        errorMessage.value = message;
+        return;
+      }
+
+      router.push('/home');
+    })
+
   }
-}
 </script>
 
 <style scoped>
@@ -63,7 +96,7 @@ export default {
   margin: auto;
 }
 
-.username-input {
+.nickname-input {
   width: 100%;
 }
 </style>

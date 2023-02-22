@@ -1,6 +1,6 @@
 import {library, config} from '@fortawesome/fontawesome-svg-core'
 import { faPaperPlaneTop } from '@fortawesome/pro-solid-svg-icons'
-import { faUser, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faBars, faMessage } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { defineNuxtPlugin } from 'nuxt/app'
 
@@ -13,7 +13,8 @@ config.autoAddCss = false
 library.add(
     faPaperPlaneTop,
     faUser,
-    faBars
+    faBars,
+    faMessage,
 )
 
 export default defineNuxtPlugin(({vueApp}) => {

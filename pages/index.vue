@@ -14,12 +14,14 @@
         v-model="nickname"
         placeholder="Digite seu nickname aqui"
         variant="solo"
-        class="nickname-input rounded-pill"
+        class="nickname-input"
       />
 
       <v-btn
         block
-        class="login-btn rounded-lg"
+        class="text-white rounded-lg font-weight-bold"
+        color="#6300E0"
+        height="56"
         @click="createConnection"
       >
         ENTRAR
@@ -75,11 +77,9 @@
   display: flex;
   width: 100vw;
   height: 100vh;
+  color: white;
   background-image: url("../assets/background.png");
   background-color: black;
-}
-.main-container small {
-  color: white;
 }
 
 .login-section {
@@ -99,12 +99,4 @@
 .nickname-input {
   width: 100%;
 }
-
-.login-btn {
-  height: 56px;
-  background-color: #6300E0;
-  color: white;
-  font-weight: 700;
-}
-
 </style>

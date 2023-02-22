@@ -15,6 +15,7 @@
         placeholder="Digite seu nickname aqui"
         variant="solo"
         class="nickname-input"
+        @keyup.enter="createConnection"
       />
 
       <v-btn
